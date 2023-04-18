@@ -1,0 +1,177 @@
+---
+import Ticketbutton from "./Ticketbutton.astro";
+---
+
+<header>
+  <div class="hbg"></div>
+  <nav>
+    <div class="logo">
+      <a href="/"><img src="/svglogo/hvidlogo.svg" alt="logo" /></a>
+      <p>KUNE <br />Festival</p>
+    </div>
+    <div class="main-menu">
+      <button class="toggle-btn"></button>
+      <ul class="nav-links">
+        <!-- <li><Ticketbutton id="mobile_ticket" /></li> -->
+        <div class="navbut" id="mobile_ticket"><li><a href="/"><strong>Tickets</strong></a></li></div>
+        <div class="navbut"><li><a href="/lineup"><strong>Lineup</strong></a></li></div>
+        <div class="navbut">
+          <li><a href="/community"><strong>Community</strong></a></li>
+        </div>
+        <div class="navbut"><li><a href="/"><strong>Info</strong></a></li></div>
+      </ul>
+    </div>
+    <Ticketbutton id="standard_ticket" />
+  </nav>
+</header>
+
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+  }
+  header {
+    position: relative;
+    background-color: var(--colour-background);
+    z-index: 0;
+  }
+
+  .hbg {
+    opacity: 0.3;
+    background-image: url("/icons/kune_logo_square_black.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    inset: 0;
+    height: auto;
+    z-index: -1;
+  }
+
+  nav {
+    display: flex;
+    height: 6.25rem;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+  }
+  .logo {
+    margin: 1.25rem;
+    display: flex;
+    align-items: center;
+  }
+  a {
+    color: var(--colour-text);
+    text-decoration: none;
+  }
+  p {
+    color: var(--colour-text);
+    margin-left: 0.625rem;
+    font-size: 1.25rem;
+    font-family: var(--font-head);
+    letter-spacing: 1px;
+  }
+  li {
+    list-style: none;
+    /* text-transform: uppercase; */
+    font-family: var(--font-head);
+    letter-spacing: 1px;
+  }
+  ul {
+    display: flex;
+  }
+
+  .navbut {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 6.25rem;
+    width: 7.5rem;
+    background-color: transparent;
+  }
+
+  .navbut:hover {
+    background-color: var(--colour-accent);
+  }
+
+  .navbut a:active {
+    background-color: var(--colour-accent);
+  }
+
+  .com {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+  }
+  /* ___________ Burgermenu ____________ */
+  #mobile_ticket {
+    display: none;
+  }
+  .toggle-btn {
+    background-image: url("/icons/burgermenu.svg");
+    border: none;
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 1.1rem;
+    cursor: pointer;
+
+    display: none; /* Skjul knappen som standard */
+  }
+  .close_toggle-btn {
+    background-image: url("/icons/kryds.svg");
+  }
+
+  @media (max-width: 600px) {
+    .toggle-btn {
+      display: block; /* Vis knappen, når viewporten maksimalt er 600px */
+      margin-left: 86%;
+      margin-bottom: 6%;
+    }
+    #mobile_ticket {
+      display: inherit;
+    }
+    #standard_ticket {
+      display: none;
+    }
+
+    /* .main-menu {
+      display: contents;  */
+    /* Fjern ".main-menu"-boksen fra ligningen, når viewporten maksimalt er 600px, men behold børnene, så disse deltager i flex-kontekten */
+    /* } */
+
+    .main-menu ul {
+      display: none; /* Fjern menu-listen som standard */
+    }
+
+    .main-menu.shown ul {
+      /* Vis menu-listen, når klassen ".shown" er til stede */
+      border-top: 1px solid #000;
+      padding-top: 1rem;
+      display: flex;
+      /* flex: 1 1 100%; */
+      flex-flow: column;
+      background-color: var(--colour-accent);
+      color: var(--colour-text);
+      justify-content: center;
+    }
+    .navbut {
+      align-self: center;
+    }
+
+    .navbut li {
+      font-family: var(--font-head);
+      font-size: 30px;
+    }
+    .navbut li:hover a {
+      color: var(--colour-background);
+    }
+    .main-menu {
+      z-index: 1;
+      position: absolute;
+      left: 0;
+      top: 29px;
+      width: 100%;
+    }
+  }
+</style>

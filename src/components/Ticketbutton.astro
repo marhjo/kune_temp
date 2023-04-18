@@ -1,0 +1,30 @@
+---
+const id = Astro.props.id;
+const view = Astro.props.class;
+---
+
+<button id={id} class={view}>TICKETS</button>
+
+<style>
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1.3rem 1rem 1.3rem;
+    background-color: var(--colour-accent);
+    color: var(--colour-text);
+    border: none;
+    /* border-radius: 5%; */
+    height: 2.5rem;
+    width: 10rem;
+    margin-right: 1.25rem;
+    font-size: 1.125rem;
+    font-family: var(--font-main);
+    transition: transform 0.25s;
+    border-radius: 0.5rem;
+    box-shadow: 1px 1px black;
+  }
+  button:hover {
+    transform: scale(1.1);
+  }
+</style>

@@ -1,0 +1,46 @@
+---
+const { variant } = Astro.props;
+---
+
+<!-- Vælg mellem primary eller secondary variant -->
+<button class={variant}>
+  <slot />
+</button>
+
+<style>
+  .primary {
+    width: 16.875rem;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--colour-text);
+    padding: 1rem 1.3rem 1rem 1.3rem;
+    background-color: transparent;
+    color: var(--colour-text);
+  }
+  .primary:hover {
+    background-color: var(--colour-accent);
+    border-color: var(--colour-accent);
+  }
+  .secondary {
+    /* border: 1px solid #c86b25; */
+    width: 7.5rem;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--colour-accent);
+    padding: 1rem 1.3rem 1rem 1.3rem;
+    background-color: transparent;
+    color: var(--colour-text);
+  }
+  .secondary:hover {
+    background-color: var(--colour-accent);
+  }
+
+  @media (max-width: 600px) {
+    .primary {
+      padding: 0.7rem 1.3rem 0.7rem 1.3rem;
+    }
+    .secondary {
+      padding: 0.7rem 1.3rem 0.7rem 1.3rem;
+    }
+  }
+</style>

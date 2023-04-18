@@ -1,0 +1,100 @@
+---
+export interface Props {
+  name: string;
+  country: string;
+  icon: string;
+  bg: string;
+  genre: string;
+}
+
+const props = Astro.props as Props;
+---
+
+<div class="card">
+  <div class="image">
+    <div class="info">
+      <div class="name">
+        <h3>{props.name}</h3>
+      </div>
+      <div class="country">
+        <p>{props.country}</p>
+      </div>
+    </div>
+    <div>
+      <img class="icon" src={`/icons/${props.icon}`} alt="" />
+    </div>
+  </div>
+  <div class="genre">
+    <p>{props.genre}</p>
+  </div>
+</div>
+
+<style define:vars={{ bg: `url(/music_images/${props.bg})` }}>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  .card {
+    height: 20rem;
+    width: 20rem;
+    background-image: var(--bg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding: 0.75rem;
+  }
+
+  .image {
+  }
+
+  .info h3,
+  .info p {
+    color: var(--colour-text);
+    font-family: var(--font-main);
+    font-size: 30px;
+  }
+
+  .info h3 {
+    text-shadow: 2px 2px black;
+  }
+
+  .info p {
+    text-shadow: 1px 1px black;
+  }
+
+  .name,
+  .country,
+  .genre,
+  .icon {
+    background: transparent;
+    width: fit-content;
+    padding: 0.3rem 0.5rem;
+    filter: drop-shadow(2px 2px 2px black);
+  }
+
+  .name h3 {
+    max-width: 14rem;
+  }
+
+  .country p {
+    font-size: 20px;
+  }
+
+  .icon {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    height: 3rem;
+    width: 3rem;
+  }
+
+  .genre {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    font-size: 25px;
+    text-align: center;
+    text-shadow: 1px 1px black;
+  }
+</style>
